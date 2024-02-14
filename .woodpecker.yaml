@@ -1,12 +1,12 @@
-steps:
-  - name: build
+pipeline:
+  build:
     image: docker:dind
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - docker buildx build -t app:local .
 
-  - name: deploy
+  deploy:
     image: docker:dind
     commands:
       - docker run -ti -d app:local
