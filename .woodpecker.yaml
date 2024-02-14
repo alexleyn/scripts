@@ -1,0 +1,11 @@
+steps:
+  - name: build
+    image: docker:dind
+    commands:
+      - docker build -t app:local
+
+  - name: deploy
+    image: docker:dind
+    commands:
+      - docker run -ti -d app:local
+
